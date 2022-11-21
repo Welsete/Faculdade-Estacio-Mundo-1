@@ -1,3 +1,7 @@
+!pip install matplotlib
+!pip install faker
+!pip install num2words
+
 from matplotlib import pyplot as plt
 from faker import Faker
 from random import randint
