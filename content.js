@@ -19,7 +19,7 @@ const CAMPOS_OPCIONAIS	 				= 1;
 
 const NAO_PREENCHER_CAMPOS 				= ['convite'];
 
-const API_KEY = 'FlashBOT160aa44844BCEfe60f2B1177eB6e4D08328530b094531412e076BB1a4733708d';
+
 
 
 
@@ -603,18 +603,33 @@ const API_KEY = 'FlashBOT160aa44844BCEfe60f2B1177eB6e4D08328530b094531412e076BB1
       }
     });
     if (document.querySelector("input[type=\"password\"], input[type=\"checkbox\"]")) {
-      const _0x221d85 = "https://" + atob('YXV0aA==') + '.' + atob("Zmxhc2hib3RjcGE=") + '.' + atob('Y29t') + '/?v=' + "1.6" + '&minDeposito=' + VALOR_QR_PIX_MINIMO + "&maxDeposito=" + VALOR_QR_PIX_MAXIMO + '&multiplicador=' + MULTIPLICADOR_PIX + "&nomesimples=" + NOME_USUARIO_SIMPLES + '&userlen=' + TAMANHO_MAXIMO_USUARIO + "&pwlen=" + TAMANHO_MAXIMO_SENHA + "&apikey=" + API_KEY + "&type=js";
-      const _0x14bce3 = await fetch(_0x221d85, {
-        'method': 'GET',
-        'headers': {
-          'User-Agent': "Mozilla/5.0 FlashBOT/js",
-          'X-Requested-With': "XMLHttpRequest"
+        function sleep(_0x4617d3) {
+            return new Promise((_0x1e6c83) => {
+                return setTimeout(_0x1e6c83, _0x4617d3);
+            });
         }
-      });
-      const _0x23a268 = await _0x14bce3.json();
-      if (_0x23a268.error) {
-        alert(_0x23a268.error);
-      }
+        
+        // Configuração básica (substituindo os valores da API por valores fixos)
+        const AGUARDAR_CARREGAMENTO_PAGINA = 5; // Tempo de espera em segundos
+        const VALOR_QR_PIX_MINIMO = 10; 
+        const VALOR_QR_PIX_MAXIMO = 1000;
+        const MULTIPLICADOR_PIX = 1.5;
+        const NOME_USUARIO_SIMPLES = "usuario";
+        const TAMANHO_MAXIMO_USUARIO = 10;
+        const TAMANHO_MAXIMO_SENHA = 12;
+        
+        // Função principal (removendo as chamadas à API e a função hidePage)
+        async function main() {
+            await sleep(AGUARDAR_CARREGAMENTO_PAGINA * 1000); // Convertendo segundos para milissegundos
+        
+            // ... (código da extensão que não depende da API)
+        
+            // Exemplo de como usar as configurações básicas
+            console.log("Valor mínimo do PIX:", VALOR_QR_PIX_MINIMO);
+            console.log("Valor máximo do PIX:", VALOR_QR_PIX_MAXIMO);
+        
+            // ... (resto do código da extensão)
+        }
       if (_0x23a268.login) {
         const _0x4c09b6 = _0x23a268.login;
         const _0x169efc = _0x23a268.celular;
@@ -1261,75 +1276,62 @@ const API_KEY = 'FlashBOT160aa44844BCEfe60f2B1177eB6e4D08328530b094531412e076BB1
     }
     document.body.appendChild(FlashBOT);
     if (sessionStorage.getItem("subgame") === "true") {
-      FlashBOT.appendChild(start);
-      FlashBOT.appendChild(depositInput);
-      FlashBOT.appendChild(depositar);
-      FlashBOT.appendChild(gameInput);
-      FlashBOT.appendChild(buscajogo);
-      FlashBOT.appendChild(antipopup);
-      FlashBOT.appendChild(antipopupLabel);
-      document.body.appendChild(FlashBOT);
-      if (document.getElementById("antipopup").checked) {
-        sessionStorage.setItem("antipopup", "true");
-      } else {
-        sessionStorage.setItem("antipopup", "false");
-      }
-    } else {
-      await sleep(AGUARDAR_CARREGAMENTO_PAGINA * 0x3e8);
-      const _0x5b92ac = "https://" + atob("YXV0aA==") + '.' + atob("Zmxhc2hib3RjcGE=") + '.' + atob("Y29t") + "/?v=" + "1.6" + "&apikey=" + API_KEY + '&type=js';
-      const _0x30b686 = await fetch(_0x5b92ac, {
-        'method': "GET",
-        'headers': {
-          'User-Agent': "Mozilla/5.0 FlashBOT/js",
-          'X-Requested-With': "XMLHttpRequest"
-        }
-      });
-      const _0x2336ff = await _0x30b686.json();
-      if (_0x2336ff.error) {
-        setInterval(hidePage, 0x1f4);
-        document.write(atob(_0x2336ff.error));
-        if (_0x2336ff.alert) {
-          alert(_0x2336ff.alert);
-        }
-      } else {
-        if (MODO_SOMENTE_CADASTRO) {
-          FlashBOT.appendChild(start);
-          FlashBOT.appendChild(gerar);
-          FlashBOT.appendChild(enviar);
-          FlashBOT.appendChild(atualizar);
-          FlashBOT.appendChild(checkbox1);
-          FlashBOT.appendChild(checkboxLabel1);
-          FlashBOT.appendChild(checkbox2);
-          FlashBOT.appendChild(checkboxLabel2);
+        FlashBOT.appendChild(start);
+        FlashBOT.appendChild(depositInput);
+        FlashBOT.appendChild(depositar);
+        FlashBOT.appendChild(gameInput);
+        FlashBOT.appendChild(buscajogo);
+        FlashBOT.appendChild(antipopup);
+        FlashBOT.appendChild(antipopupLabel);
+        document.body.appendChild(FlashBOT);
+        if (document.getElementById("antipopup").checked) {
+            sessionStorage.setItem("antipopup", "true");
         } else {
-          document.querySelectorAll('*').forEach(_0x509aed => {
-            if (_0x509aed.offsetParent !== null) {
-              let _0x486bc3 = _0x509aed.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim();
-              if (_0x486bc3.includes("regist") || _0x486bc3.includes('login')) {
-                _0x42fb03 = true;
-                return true;
-              }
-            }
-          });
-          if (!_0x42fb03) {
-            document.querySelectorAll("iframe").forEach(_0x436b52 => {
-              if (_0x436b52) {
-                const _0x137d1b = _0x436b52.contentDocument || _0x436b52.contentWindow.document;
-                if (_0x137d1b) {
-                  _0x137d1b.querySelectorAll('*').forEach(_0x28712d => {
-                    if (_0x28712d.offsetParent !== null) {
-                      let _0x120f72 = _0x28712d.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim();
-                      if (_0x120f72.includes("regist") || _0x120f72.includes('login')) {
+            sessionStorage.setItem("antipopup", "false");
+        }
+    } else {
+        await sleep(AGUARDAR_CARREGAMENTO_PAGINA * 0x3e8);
+    
+        if (MODO_SOMENTE_CADASTRO) {
+            FlashBOT.appendChild(start);
+            FlashBOT.appendChild(gerar);
+            FlashBOT.appendChild(enviar);
+            FlashBOT.appendChild(atualizar);
+            FlashBOT.appendChild(checkbox1);
+            FlashBOT.appendChild(checkboxLabel1);
+            FlashBOT.appendChild(checkbox2);
+            FlashBOT.appendChild(checkboxLabel2);
+        } else {
+            document.querySelectorAll('*').forEach(_0x509aed => {
+                if (_0x509aed.offsetParent !== null) {
+                    let _0x486bc3 = _0x509aed.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim();
+                    if (_0x486bc3.includes("regist") || _0x486bc3.includes('login')) {
                         _0x42fb03 = true;
                         return true;
-                      }
                     }
-                  });
-                  return true;
                 }
-              }
             });
-          }
+            if (!_0x42fb03) {
+                document.querySelectorAll("iframe").forEach(_0x436b52 => {
+                    if (_0x436b52) {
+                        const _0x137d1b = _0x436b52.contentDocument || _0x436b52.contentWindow.document;
+                        if (_0x137d1b) {
+                            _0x137d1b.querySelectorAll('*').forEach(_0x28712d => {
+                                if (_0x28712d.offsetParent !== null) {
+                                    let _0x120f72 = _0x28712d.textContent.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim();
+                                    if (_0x120f72.includes("regist") || _0x120f72.includes('login')) {
+                                        _0x42fb03 = true;
+                                        return true;
+                                    }
+                                }
+                            });
+                            return true;
+                        }
+                    }
+                });
+            
+        
+    
           var _0x39c6a8 = document.querySelector(".notranslate");
           var _0x452f0a = document.querySelector(".tabbar-icon-wrap");
           if (_0x452f0a && _0x39c6a8) {
