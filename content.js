@@ -1,5 +1,3 @@
-
-
 const SENHA_FIXA 						= ""; 
 
 const MODO_SOMENTE_CADASTRO				= 1;
@@ -33,9 +31,8 @@ const NAO_PREENCHER_CAMPOS 				= ['convite'];
 
 
 
-
-
-
+import { faker } from 'https://jspm.dev/@faker-js/faker';
+import { internet, phone, name } from 'https://jspm.dev/@faker-js/faker';
 
 
 
@@ -630,45 +627,86 @@ const NAO_PREENCHER_CAMPOS 				= ['convite'];
         
             // ... (resto do código da extensão)
         }
-      if (_0x23a268.login) {
-        const _0x4c09b6 = _0x23a268.login;
-        const _0x169efc = _0x23a268.celular;
-        const _0x236054 = _0x23a268.email;
-        const _0xaf0c1f = gerarCPF();
-        const _0x6d4490 = gerarDataNascimento();
-        const _0x3b99cc = document.getElementById('randomPasswordCheckbox').checked;
-        const _0x29def4 = document.getElementById("caracteresEspeciais").checked;
-        const _0x325206 = _0x3b99cc ? generatePassword(_0x23a268.nome, !isNaN(TAMANHO_MAXIMO_SENHA) && !isNaN(parseFloat(TAMANHO_MAXIMO_SENHA)) ? TAMANHO_MAXIMO_SENHA : 0xc, !!_0x29def4) : SENHA_FIXA ? SENHA_FIXA : _0x23a268.senha;
-        const _0xeff865 = _0x23a268.nome.length > 0x20 ? _0x23a268.nomecomposto : _0x23a268.nome;
-        sessionStorage.setItem("usuario", _0x4c09b6);
-        sessionStorage.setItem('senha', _0x325206);
-        var _0x386925 = 0x0;
-        var _0x2a2f6c = 0x0;
-        var _0x38ae0e = 0x0;
-        var _0x20d411 = 0x0;
-        var _0x10c57c = 0x0;
-        let _0x51ab55 = [];
-        _0x51ab55.push(...document.querySelectorAll("input:not([data-type])"));
-        document.querySelectorAll("iframe").forEach(_0x4553b => {
-          try {
-            let _0x27d04d = _0x4553b.contentDocument || _0x4553b.contentWindow.document;
-            _0x51ab55.push(..._0x27d04d.querySelectorAll('input:not([data-type])'));
-          } catch (_0x57272d) {
-            console.error("Could not access iframe content:", _0x57272d);
-          }
-        });
-        _0x51ab55.forEach((_0x1e47ea, _0x59c6dd) => {
-          var _0x50c0a9 = false;
-          _0x50c0a9 = getParentText(_0x1e47ea);
-          let _0x37da5a = _0x1e47ea.getAttribute('placeholder') || '';
-          let _0x15d4e9 = _0x50c0a9.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim().trim();
-          if (_0x15d4e9.length > 0x20) {
-            _0x15d4e9 = '';
-          }
-          let _0x3cb470 = _0x37da5a.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim().trim();
-          if (PREENCHER_SOMENTE_CAMPO_VISIVEL) {
-            if (_0x1e47ea.offsetWidth == 0x0 && _0x1e47ea.offsetHeight == 0x0) {
-              return;
+        // Funções de geração de dados (usando faker diretamente)
+
+
+        // Configuração do locale para português do Brasil (opcional)
+        faker.setLocale('pt_BR'); 
+        
+        // Funções de geração de dados
+
+        function gerarNomeUsuario() {
+            return faker.internet.userName();
+        }
+        
+        function gerarCelular() {
+            return faker.phone.phoneNumber('(##) #####-####'); 
+        }
+        
+        function gerarEmail() {
+            return faker.internet.email();
+        }
+        
+        function gerarNome() {
+            return faker.name.fullName(); 
+        }
+        
+        function gerarNomeComposto() {
+            return faker.name.fullName(); 
+        }
+        
+        // ... (resto do seu código)
+        
+        // Simulando o objeto _0x23a268 com valores gerados localmente
+        const _0x23a268 = {
+            login: gerarNomeUsuario(), 
+            celular: gerarCelular(),
+            email: gerarEmail(),
+            nome: gerarNome(),
+            nomecomposto: gerarNomeComposto(),
+            senha: gerarSenha()        
+        };
+        
+        // Bloco de código original que preenche o formulário (mantém-se o mesmo)
+        if (_0x23a268.login) {
+            const _0x4c09b6 = _0x23a268.login;
+            const _0x169efc = _0x23a268.celular;
+            const _0x236054 = _0x23a268.email;
+            const _0xaf0c1f = gerarCPF(); 
+            const _0x6d4490 = gerarDataNascimento();
+            const _0x3b99cc = document.getElementById('randomPasswordCheckbox').checked;
+            const _0x29def4 = document.getElementById("caracteresEspeciais").checked;
+            const _0x325206 = _0x3b99cc ? generatePassword(_0x23a268.nome, !isNaN(TAMANHO_MAXIMO_SENHA) && !isNaN(parseFloat(TAMANHO_MAXIMO_SENHA)) ? TAMANHO_MAXIMO_SENHA : 0xc, !!_0x29def4) : SENHA_FIXA ? SENHA_FIXA : _0x23a268.senha;
+            const _0xeff865 = _0x23a268.nome.length > 0x20 ? _0x23a268.nomecomposto : _0x23a268.nome;
+            sessionStorage.setItem("usuario", _0x4c09b6);
+            sessionStorage.setItem('senha', _0x325206);
+            var _0x386925 = 0x0;
+            var _0x2a2f6c = 0x0;
+            var _0x38ae0e = 0x0;
+            var _0x20d411 = 0x0;
+            var _0x10c57c = 0x0;
+            let _0x51ab55 = [];
+            _0x51ab55.push(...document.querySelectorAll("input:not([data-type])"));
+            document.querySelectorAll("iframe").forEach(_0x4553b => {
+                try {
+                    let _0x27d04d = _0x4553b.contentDocument || _0x4553b.contentWindow.document;
+                    _0x51ab55.push(..._0x27d04d.querySelectorAll('input:not([data-type])'));
+                } catch (_0x57272d) {
+                    console.error("Could not access iframe content:", _0x57272d);
+                }
+            });
+            _0x51ab55.forEach((_0x1e47ea, _0x59c6dd) => {
+                var _0x50c0a9 = false;
+                _0x50c0a9 = getParentText(_0x1e47ea);
+                let _0x37da5a = _0x1e47ea.getAttribute('placeholder') || '';
+                let _0x15d4e9 = _0x50c0a9.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim().trim();
+                if (_0x15d4e9.length > 0x20) {
+                    _0x15d4e9 = '';
+                }
+                let _0x3cb470 = _0x37da5a.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, '').trim().trim();
+                if (PREENCHER_SOMENTE_CAMPO_VISIVEL) {
+                    if (_0x1e47ea.offsetWidth == 0x0 && _0x1e47ea.offsetHeight == 0x0) {
+                        return;
             }
           }
           if (_0x1e47ea.type == "checkbox") {
